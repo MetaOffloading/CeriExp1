@@ -14,7 +14,8 @@ import com.sam.webtasks.basictools.TimeStamp;
 public class TimeBlock {
 	//display settings
 	public static boolean clockVisible;
-	public static boolean offloadButtonVisible;
+	public static boolean timerButtonVisible;
+	public static boolean reminderButtonVisible;
 	
 	//timing settings
 	public static int currentTime;
@@ -40,9 +41,12 @@ public class TimeBlock {
 	public static int nBackNonMatchCorr; //number of correct 'nonmatch' responses
 	public static int nBackTargetsPresented;
 	public static int PMhits;
-	public static boolean offloadButtonOperated;
-	public static int offloadClicks; //how many times does the offload button need to be clicked?
+	public static boolean timerButtonOperated;
+	public static boolean reminderButtonOperated;
+	public static int timerClicks; //how many times does the offload button need to be clicked?
+	public static int reminderClicks;
 	public static int nReminders;
+	public static int nTimers;
 	public static boolean spacebarPressed = false;
 	
 	//should offloading be allowed in this block?
@@ -64,7 +68,8 @@ public class TimeBlock {
 	
 	public static void Init() {
 		clockVisible=true;
-		offloadButtonVisible=true;
+		timerButtonVisible=true;
+		reminderButtonVisible=true;
 		currentTime=0;
 		clockStartTime=0;
 		targetInstructionInterval=10;
@@ -82,9 +87,12 @@ public class TimeBlock {
 		nBackNonMatchCorr = 0;
 		nBackTargetsPresented = 0;
 		PMhits=0;
-		offloadButtonOperated=false;
+		timerButtonOperated=false;
+		reminderButtonOperated=false;
 		nReminders=0;
-		offloadClicks=5;
+		nTimers=0;
+		timerClicks=5;
+		reminderClicks=5;
 		spacebarPressed=false;
 		
 		if (TimeDisplay.isInitialised == false) {
@@ -95,7 +103,8 @@ public class TimeBlock {
 		TimeDisplay.stimulusDisplay.setHTML("Press spacebar to start");
 		
 		TimeDisplay.focusPanel.setFocus(true);
-		TimeDisplay.offloadButton.setEnabled(false);
+		TimeDisplay.timerButton.setEnabled(false);
+		TimeDisplay.reminderButton.setEnabled(false);
 		TimeDisplay.awaitingPMresponse=false;
 		TimeDisplay.timeForInstruction=false;
 	}
@@ -127,7 +136,7 @@ public class TimeBlock {
 		
 		TimeDisplay.clockDisplay.setVisible(clockVisible);
 		TimeDisplay.SetClockVisible(clockAlwaysOn);
-		TimeDisplay.offloadButton.setVisible(offloadButtonVisible);
+		TimeDisplay.timerButton.setVisible(timerButtonVisible);
 		RootPanel.get().add(TimeDisplay.focusPanel);
 		TimeDisplay.waitForSpacebar = true;
 

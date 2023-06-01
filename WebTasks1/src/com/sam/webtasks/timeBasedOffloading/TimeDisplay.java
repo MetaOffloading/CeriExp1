@@ -34,10 +34,11 @@ public class TimeDisplay {
 	public static boolean awaitingPMresponse = false;
 	
 	//should a reminder be displayed for the next target?
-	public static boolean showReminder = false;
+	public static boolean showTimer = false;
 	
 	//how many times does the offload button need to be clicked?
-	public static int offloadClicksRemaining;
+	public static int timerClicksRemaining;
+	public static int reminderClicksRemaining;
 	
 	/*------------display parameters------------*/
 	public static String displayHeight="50%";
@@ -57,8 +58,8 @@ public class TimeDisplay {
 	
 	public static final HTML clockDisplay = new HTML();
 	public static final HTML stimulusDisplay = new HTML();
-	public static final Button offloadButton = new Button();
-	
+	public static final Button timerButton = new Button();
+	public static final Button reminderButton = new Button();
 	
 	/*------------set up display------------*/
 	public static void Init() {
@@ -90,9 +91,10 @@ public class TimeDisplay {
 		displayPanel.add(stimulusPanel);
 		
 		//offloading panel
-		offloadButton.setEnabled(false);
+		timerButton.setEnabled(false);
 		
-		offloadPanel.add(offloadButton);
+		offloadPanel.add(timerButton);
+		offloadPanel.add(reminderButton);
 		
 		displayPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
 		displayPanel.add(offloadPanel);
@@ -108,31 +110,56 @@ public class TimeDisplay {
 			}
 		});
 		
-		//set up the offload button
-		offloadClicksRemaining = TimeBlock.offloadClicks;
+		//set up the timer button
+		timerClicksRemaining = TimeBlock.timerClicks;
 		
-		offloadButton.setHTML("Remind me (" + offloadClicksRemaining + ")");
+		timerButton.setHTML("Set timer (" + timerClicksRemaining + ")");
 		
-		offloadButton.addClickHandler(new ClickHandler() {
+		timerButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				if (--offloadClicksRemaining == 0) {
+				if (--timerClicksRemaining == 0) {
 					String data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
 				
-					PHP.logData("TB_offloadButtonClick", data, false);
+					PHP.logData("TB_timerButtonClick", data, false);
 				
-					showReminder=true;
-					TimeBlock.offloadButtonOperated=true;
-					TimeBlock.nReminders++;
-					offloadButton.setEnabled(false);
+					showTimer=true;
+					TimeBlock.timerButtonOperated=true;
+					TimeBlock.nTimers++;
+					timerButton.setEnabled(false);
 					focusPanel.setFocus(true);
-					offloadClicksRemaining = TimeBlock.offloadClicks;
+					timerClicksRemaining = TimeBlock.timerClicks;
 					
-					offloadButton.setHTML("Reminder set");
+					timerButton.setHTML("Timer set");
 				} else {
-					offloadButton.setHTML("Remind me (" + offloadClicksRemaining + ")");
+					timerButton.setHTML("Set timer (" + timerClicksRemaining + ")");
 				}
 			}
 		});
+		
+		//set up the reminder button
+				reminderClicksRemaining = TimeBlock.reminderClicks;
+				
+				reminderButton.setHTML("Create reminder (" + reminderClicksRemaining + ")");
+				
+				reminderButton.addClickHandler(new ClickHandler() {
+					public void onClick(ClickEvent event) {
+						if (--reminderClicksRemaining == 0) {
+							String data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
+						
+							PHP.logData("TB_reminderButtonClick", data, false);
+
+							TimeBlock.reminderButtonOperated=true;
+							TimeBlock.nReminders++;
+							reminderButton.setEnabled(false);
+							focusPanel.setFocus(true);
+							reminderClicksRemaining = TimeBlock.reminderClicks;
+							
+							reminderButton.setHTML(Window.prompt("What is your reminder?", ""));
+						} else {
+							reminderButton.setHTML("Create reminder (" + reminderClicksRemaining + ")");
+						}
+					}
+				});
 	}
 
 	/*------------clock functions------------*/
@@ -149,9 +176,9 @@ public class TimeDisplay {
 			
 			//start reminding for target?
 			if (TimeBlock.lastTarget - TimeBlock.currentTime == TimeBlock.PMwindow) {
-				if (showReminder) {
+				if (showTimer) {
 					PHP.logData("TB_reminderOn", data, false);
-					TimeDisplay.showReminder = false;
+					TimeDisplay.showTimer = false;
 					
 					reminder.scheduleRepeating(200);
 				}
@@ -163,7 +190,7 @@ public class TimeDisplay {
 				
 				reminder.cancel();
 				SetClockVisible(TimeBlock.clockAlwaysOn);
-				TimeDisplay.offloadButton.setEnabled(false);
+				TimeDisplay.timerButton.setEnabled(false);
 			}
 			
 			//instruction for next target?

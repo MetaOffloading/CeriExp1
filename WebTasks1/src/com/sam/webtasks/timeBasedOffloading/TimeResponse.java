@@ -19,15 +19,13 @@ public class TimeResponse {
 		//end of block? if so return control to the sequencehandler
 		//we specify blockDuration in seconds if it is positive, or trials if it is negative
 		boolean blockOver = false;
-		
-		/*
+			
 		if (response==KeyCodes.KEY_Q) {
 			TimeBlock.PMhits=1;
 			TimeBlock.nBackMatchCorr=1;
 			TimeBlock.nBackNonMatchCorr=1;
 			blockOver = true;
 		}
-		*/
 		
 		if (TimeBlock.blockDuration > 0) { //specified in seconds
 			if (TimeBlock.currentTime >= TimeBlock.blockDuration) {
@@ -49,7 +47,8 @@ public class TimeResponse {
 			new Timer() {
 				public void run() {
 					String data = TimeBlock.blockNumber + "," + TimeBlock.trialNumber + ",";
-					data = data + TimeBlock.offloadButtonVisible + ",";
+					data = data + TimeBlock.timerButtonVisible + ",";
+					data = data + TimeBlock.reminderButtonVisible + ",";
 					data = data + TimeBlock.nBackNonMatchCorr + "," + TimeBlock.nBackMatchCorr + ",";
 					data = data + TimeBlock.PMhits + "," + TimeBlock.nReminders;
 					
@@ -65,7 +64,8 @@ public class TimeResponse {
 			
 			TimeDisplay.stimulusDisplay.setHTML("");
 			
-			TimeDisplay.offloadButton.setHTML("Remind me (" + TimeDisplay.offloadClicksRemaining + ")");
+			TimeDisplay.timerButton.setHTML("Set timer (" + TimeDisplay.timerClicksRemaining + ")");
+			TimeDisplay.reminderButton.setHTML("Create reminder (" + TimeDisplay.reminderClicksRemaining + ")");
 			
 			new Timer() {
 				public void run() {
@@ -87,7 +87,8 @@ public class TimeResponse {
 			if (response==TimeBlock.spaceBarKey) {
 				if (TimeDisplay.awaitingPMresponse) {
 					if (TimeBlock.allowOffloading) {
-						TimeDisplay.offloadButton.setEnabled(true);
+						TimeDisplay.timerButton.setEnabled(true);
+						TimeDisplay.reminderButton.setEnabled(true);
 					}
 				}
 				
@@ -119,7 +120,8 @@ public class TimeResponse {
 			if ((response == TimeBlock.matchKey)||(response == TimeBlock.nonMatchKey)) { //increment trial number if one of the 2back keys was pressed
 				TimeBlock.trialNumber++;
 			} else if (response == TimeBlock.revealClockKey) {
-				String data = TimeBlock.blockNumber + "," + TimeBlock.offloadButtonVisible + ",";
+				String data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
+				data = data + TimeBlock.reminderButtonVisible + ",";
 				data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 				data = data + TimeDisplay.awaitingPMresponse + "," + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
 				data = data + TimeBlock.currentTime + ",";
@@ -152,7 +154,8 @@ public class TimeResponse {
 				}
 			}
 			
-			String data = TimeBlock.blockNumber + "," + TimeBlock.offloadButtonVisible + ",";
+			String data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
+			data = data + TimeBlock.reminderButtonVisible + ",";
 			data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 			data = data + response + "," + RT + ",";
 			data = data + TimeDisplay.awaitingPMresponse + "," + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
@@ -169,8 +172,9 @@ public class TimeResponse {
 						TimeDisplay.awaitingPMresponse=false;
 						
 						TimeDisplay.reminder.cancel();
-						TimeDisplay.showReminder = false;
-						TimeDisplay.offloadButton.setEnabled(false);
+						TimeDisplay.showTimer = false;
+						TimeDisplay.timerButton.setEnabled(false);
+						TimeDisplay.reminderButton.setEnabled(false);
 
 						if (TimeBlock.spacebarPressed==false) {
 							TimeDisplay.clockDisplay.addStyleName("greenyellow");
