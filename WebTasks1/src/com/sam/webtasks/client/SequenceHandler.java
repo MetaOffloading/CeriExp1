@@ -67,22 +67,13 @@ public class SequenceHandler {
 			 **********************************************************************/
 			case 1:
 				TimeBlock.Init();
-				TimeBlock.blockDuration=25;
-				TimeBlock.defaultPMintervals=false;
-				TimeBlock.PMinterval_list.add(10);
-				TimeBlock.blockNumber=-7;
-				
-				TimeBlock.Run();
-				break;	
-			case 2:
-				TimeBlock.Init();
-				TimeBlock.blockDuration=25;
-				TimeBlock.defaultPMintervals=false;
-				TimeBlock.PMinterval_list.add(10);
-				TimeBlock.blockNumber=-7;
-				
 				TimeBlock.Run();
 				break;
+			case 2:
+				TimeBlock.Init();
+				TimeBlock.multiPM=true;
+				TimeBlock.Run();
+				break;	
 			}
 			break;
 

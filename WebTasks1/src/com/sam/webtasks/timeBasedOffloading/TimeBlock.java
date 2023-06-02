@@ -33,6 +33,47 @@ public class TimeBlock {
 	public static boolean shufflePMintervals;
 	public static int blockNumber;
 	public static int trialNumber;
+	/*
+	public static int[] numberKeys = {KeyCodes.KEY_ZERO,
+									  KeyCodes.KEY_ONE,
+			                          KeyCodes.KEY_TWO, 
+			                          KeyCodes.KEY_THREE,
+			                          KeyCodes.KEY_FOUR,
+			                          KeyCodes.KEY_FIVE,
+			                          KeyCodes.KEY_SIX,
+			                          KeyCodes.KEY_SEVEN,
+			                          KeyCodes.KEY_EIGHT,
+			                          KeyCodes.KEY_NINE};
+	*/
+	
+	public static int[] numberKeys = {KeyCodes.KEY_A,
+									  KeyCodes.KEY_B,
+									  KeyCodes.KEY_C,
+									  KeyCodes.KEY_D,
+									  KeyCodes.KEY_E,
+									  KeyCodes.KEY_F,
+									  KeyCodes.KEY_G,
+									  KeyCodes.KEY_H,
+									  KeyCodes.KEY_I,
+									  KeyCodes.KEY_J,
+									  KeyCodes.KEY_K,
+									  KeyCodes.KEY_L,
+									  KeyCodes.KEY_M,
+									  KeyCodes.KEY_N,
+									  KeyCodes.KEY_O,
+									  KeyCodes.KEY_P,
+									  KeyCodes.KEY_Q,
+									  KeyCodes.KEY_R,
+									  KeyCodes.KEY_S,
+									  KeyCodes.KEY_T,
+									  KeyCodes.KEY_U,
+									  KeyCodes.KEY_V,
+									  KeyCodes.KEY_W,
+									  KeyCodes.KEY_X,
+									  KeyCodes.KEY_Y,
+									  KeyCodes.KEY_Z};
+
+	public static int PMkey;
 	public static int spaceBarKey = KeyCodes.KEY_SPACE;
 	public static int nonMatchKey = KeyCodes.KEY_Z;
 	public static int matchKey = KeyCodes.KEY_X;
@@ -48,6 +89,10 @@ public class TimeBlock {
 	public static int nReminders;
 	public static int nTimers;
 	public static boolean spacebarPressed = false;
+	
+	
+	//multiple possible PM keys?
+	public static boolean multiPM = false;
 	
 	//should offloading be allowed in this block?
 	public static boolean allowOffloading=true;

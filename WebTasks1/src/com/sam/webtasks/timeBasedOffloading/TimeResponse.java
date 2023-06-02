@@ -164,7 +164,7 @@ public class TimeResponse {
 			
 			PHP.logData("TB_response", data, false);
 			
-			if (response==TimeBlock.spaceBarKey) {
+			if (response==TimeBlock.PMkey) {
 				if (TimeDisplay.awaitingPMresponse) {
 					if (Math.abs(TimeBlock.currentTime-TimeBlock.lastTarget) <= TimeBlock.PMwindow) {
 						TimeBlock.PMhits++;

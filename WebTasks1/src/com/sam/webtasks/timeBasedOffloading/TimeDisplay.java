@@ -92,6 +92,7 @@ public class TimeDisplay {
 		
 		//offloading panel
 		timerButton.setEnabled(false);
+		reminderButton.setEnabled(false);
 		
 		offloadPanel.add(timerButton);
 		offloadPanel.add(reminderButton);
@@ -191,6 +192,7 @@ public class TimeDisplay {
 				reminder.cancel();
 				SetClockVisible(TimeBlock.clockAlwaysOn);
 				TimeDisplay.timerButton.setEnabled(false);
+				TimeDisplay.reminderButton.setEnabled(false);
 			}
 			
 			//instruction for next target?
@@ -202,8 +204,17 @@ public class TimeDisplay {
 				
 				awaitingPMresponse=true;
 				
-				instructionString = "Hit the spacebar at " + timeString(TimeBlock.nextTarget);
+				if (TimeBlock.multiPM == false) { 
+					instructionString = "Hit the spacebar at " + timeString(TimeBlock.nextTarget);
+					TimeBlock.PMkey = TimeBlock.spaceBarKey;
+				} else {
+					int k = Random.nextInt(TimeBlock.numberKeys.length);
 
+					instructionString = "Hit the " + (char)(k+65) + " key at " + timeString(TimeBlock.nextTarget);
+					
+					TimeBlock.PMkey = TimeBlock.numberKeys[k];
+				}
+				
 				timeForInstruction=true;
 				
 				TimeBlock.nextInstruction = TimeBlock.nextTarget+TimeBlock.targetInstructionInterval;
