@@ -66,13 +66,171 @@ public class SequenceHandler {
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
 			case 1:
-				TimeBlock.Init();
-				TimeBlock.Run();
+				ClickPage.Run(Instructions.Get(10), "Next");
 				break;
 			case 2:
 				TimeBlock.Init();
-				TimeBlock.multiPM=true;
+				TimeBlock.blockDuration=-10;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.clockVisible=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.targetInstructionInterval = -1; //don't present any targets
+				TimeBlock.blockNumber=-1;
 				TimeBlock.Run();
+				break;
+			case 3:
+				if ((TimeBlock.nBackNonMatchCorr==0)|(TimeBlock.nBackMatchCorr==0)) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2);
+					
+					ClickPage.Run("Your accuracy was too low", "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(20), "Next");
+				}
+				break;
+			case 4:
+				TimeBlock.Init();
+				TimeBlock.blockDuration=25;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.blockNumber=-2;
+				TimeBlock.Run();
+				break;
+			case 5:
+				if (TimeBlock.PMhits==0) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-3);
+					
+					//we set the nBack accuracy to greater than 0, so that the
+					//practice session for this task does not get triggered again
+					TimeBlock.nBackNonMatchCorr=1;
+					TimeBlock.nBackMatchCorr=1;
+					
+					ClickPage.Run("You didn't remember to press the spacebar.", "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(30),  "Next");
+				}
+				break;
+			case 6:
+				TimeBlock.Init();
+				TimeBlock.blockDuration=25;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.multiPM=true;
+				TimeBlock.blockNumber=-3;
+				TimeBlock.Run();
+				break;
+			case 7:
+				ClickPage.Run(Instructions.Get(40),  "Next");
+				break;
+			case 8:
+				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
+					ClickPage.Run(Instructions.Get(50),  "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(70),  "Next");
+				}
+				break;
+			case 9:
+				TimeBlock.Init();
+				TimeBlock.blockDuration=25;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.multiPM=true;
+				TimeBlock.blockNumber=-4;
+				
+				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
+					TimeBlock.timerButtonVisible=true;
+				} else {
+					TimeBlock.reminderButtonVisible=true;
+				}
+				
+				TimeBlock.Run();
+				break;
+			case 10:
+				ClickPage.Run(Instructions.Get(60),  "Next");
+				break;
+			case 11:
+				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
+					ClickPage.Run(Instructions.Get(70),  "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(50),  "Next");
+				}
+				break;
+			case 12:
+				TimeBlock.Init();
+				TimeBlock.blockDuration=25;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.multiPM=true;
+				TimeBlock.blockNumber=-5;
+				
+				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
+					TimeBlock.reminderButtonVisible=true;
+				} else {
+					TimeBlock.timerButtonVisible=true;
+				}
+				
+				TimeBlock.Run();
+				break;
+			case 13:
+				ClickPage.Run(Instructions.Get(80),  "Next");
+				break;
+			case 14:
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					ClickPage.Run(Instructions.Get(90),  "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(100), "Next");
+				}
+				break;
+			case 15:
+				TimeBlock.Init();
+				
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					TimeBlock.blockNumber=1;
+					TimeBlock.multiPM=false;
+				} else {
+					TimeBlock.blockNumber=2;
+					TimeBlock.multiPM=true;
+				}
+				
+				TimeBlock.Run();
+				break;
+			case 16:
+				ClickPage.Run(Instructions.Get(110),  "Next");
+				break;
+			case 17:
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					ClickPage.Run(Instructions.Get(100),  "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(90), "Next");
+				}
+				break;
+			case 18:
+				TimeBlock.Init();
+				
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					TimeBlock.blockNumber=2;
+					TimeBlock.multiPM=true;
+				} else {
+					TimeBlock.blockNumber=1;
+					TimeBlock.multiPM=false;
+				}
+				
+				TimeBlock.Run();
+				break;
+			case 19:
+				ClickPage.Run(Instructions.Get(120), "nobutton");
 				break;	
 			}
 			break;

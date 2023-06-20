@@ -31,112 +31,66 @@ public class Instructions {
 					+ "If you press the spacebar within 2 seconds of the instructed time (for example "
 					+ "0:18 to 0:22) this will be counted as correct.";
 			break;	
-		case 21:
-			i = "Now you will practice the same task again, but this time the clock will not automatically stay "
-					+ "on the screen.<br><br>You can reveal the clock to check the time whenever you want by pressing "
-					+ "the <b>M</b> button. You can do this as many times as you like.<br><br>For the rest of the experiment, "
-					+ "you will need to press the <b>M</b> button to reveal the clock.<br><br>Each time you are asked to press "
-					+ "the spacebar, you can only do this <b>once</b>. For example, if you are told to press the spacebar at "
-					+ "0:20 and you already press it at 0:15, it will not count if you press it again. So you should only "
-					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice.";
-			break;
-		case 22:
+		case 30:
 			i = "Each time you are asked to press "
 					+ "the spacebar, you can only do this <b>once</b>. For example, if you are told to press the spacebar at "
 					+ "0:20 and you already press it at 0:15, it will not count if you press it again. So you should only "
-					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice again.";
-			break;
-		case 30:
-			i = "In the main experiment you will score one point each time you press the correct button "
-					+ "in the <b>letter</b> task. If your final score is in the top half of participants, you will "
-					+ "receive an aditional bonus payment of £1.<br><br>"
-					+ "Now let's do some more practice of the task you have just done.<br><br>"
-					+ "When you get an instruction to press the spacebar, there will always be a <b>10 "
-					+ "second</b> wait until you should press it.<br><br>";
+					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice again. When you do "
+					+ "the task this time, instead of being asked to press the spacebar at a particular time you will be "
+					+ "asked to press another button on your keyboard. For example you might be asked to press the 'A' key. "
+					+ "The computer will tell you which key to press.";
 			break;
 		case 40:
-			i = "Now that you have had some practice, we would like you to tell us how accurately you "
-					+ "think you can perform the timer task when it is exactly like the task you have just "
-					+ "practiced, with a <b>10 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you will remember to press the spacebar correctly when there is a <b>10 second wait</b>."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
+			i = "To help you perform the task, you will have the option to set a reminder, if you want.<br><br>"
+					+ "Click below for instructions how to do this.";
 			break;
 		case 50:
-			i = "Now we'll do some more practice of the task, but this time there will always be a "
-					+ "<b>20 second wait</b> in the timer task.";
+			i = "There will be a button on the screen saying 'Set timer'. You need to press this button <b>twice</b> "
+					+ "to activate a timer. Once you have activated it, this will make the clock flash red when it is "
+					+ "time to press whichever button you have been asked to press. This means that you don't have to remember "
+					+ "to check the clock yourself, but you still need to remember which button to press when the time comes.<br><br>"
+					+ "Note that you will only be able to press this button after you have been given the instruction about "
+					+ "which button to press and when.<br><br>"
+					+ "Click below to try this.";
 			break;
 		case 60:
-			i = "Now that you have had some practice, we would like you to tell us how accurately you "
-					+ "think you can perform the timer task when it is exactly like the task you have just "
-					+ "practiced, with a <b>20 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you will remember to press the spacebar correctly when there is a <b>20 second wait</b>."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
+			i = "There is another type of reminder you can set as well, click below for more instructions.";
 			break;
 		case 70:
-			i = "Now we'll do some more practice of the task, but this time there will always be a "
-					+ "<b>30 second wait</b> in the timer task.";
+			i = "There will be a button on the screen saying 'Create reminder'. You can click this button, then "
+					+ "type in any reminder that you would like to create. This will then be visible on the screen "
+					+ "where the button was. You can type in anything, it is completely up to you.<br><br>Note that you will "
+					+ "only be able to press this button after you have been given the instruction about which button to press and when.<br><br>"
+					+ "Once you have created this reminder, it will always be visible on the screen, but you will "
+					+ "have to remember to look at it at the instructed time.<br><br>"
+					+ "Click below to try this.";
 			break;
 		case 80:
-			i = "Now that you have had some practice, we would like you to tell us how accurately you "
-					+ "think you can perform the timer task when it is exactly like the task you have just "
-					+ "practiced, with a <b>30 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you will remember to press the spacebar correctly when there is a <b>30 second wait</b>."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
+			i = "Now the experiment will start for real. Click below to start.";
 			break;
 		case 90:
-			i = "There is one last thing to explain about the task. Sometimes, there will be a button on "
-					+ "the screen saying \"Remind Me\". Once you have been told to press the spacebar at "
-					+ "a particular time, you can use this button to set a reminder. You need to press this button "
-					+ "<b>five times</b> to set a reminder. This means that when "
-					+ "it's nearly time to press the spacebar, the clock will start flashing to remind you.<br><br>"
-					+ "Please try using this button now.";
+			i = "In this part of the experiment, the instruction will <b>always</b> be "
+					+ "to press the spacebar at a particular time, not one of the other keys. Sometimes you will be told "
+					+ "to press the spacebar soon (in 10 seconds) and sometimes you will have to wait longer (30 seconds). "
+					+ "The instructions on the screen will always tell you exactly what to do.<br><br>"
+					+ "You are free to set as many reminders as you like. You can set either type of reminder, or both together. It is "
+					+ "completely up to you. Click below to continue.";
 			break;
 		case 100:
-			i = "When the \"Remind Me\" button is on the screen, it is completely up to you whether to use it or not. "
-					+ "You can set reminders if you want to, or you can just remember to press the spacebar "
-					+ "with your own memory, without setting a reminder. It's your choice, so you should just do whatever you prefer.<br><br>"
-					+ "That's the end of the practice. The main experiment will start now.";
+			i = "In this part of the experiment, the instruction will <b>never</b> be to press the spacebar at a particular "
+					+ "time, it will always be one of the other keys. Sometimes you will be told "
+					+ "to press the spacebar soon (in 10 seconds) and sometimes you will have to wait longer (30 seconds). "
+					+ "The instructions on the screen will always tell you exactly what to do.<br><br>"
+					+ "You are free to set as many reminders as you like. You can set either type of reminder, or both. It is "
+					+ "completely up to you. Click below to continue.";
 			break;
 		case 110:
-			i = "Time for a break. Press below to continue with the experiment.";
-			break;
+			i = "Thank you, you are now half way through the experiment.<br><br>When you are ready, click below to continue.";
+			break;	
 		case 120:
-			i = "You have now completed the task. Now that you have finished, please tell us how accurately you"
-					+ "think you can perform the timer task when you just use your own memory (no reminders) "
-					+ ", with a <b>10 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you can remember to press the spacebar correctly when there is a <b>10 second wait</b> and no reminder."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
-			break;
-		case 130:
-			i = "Now, please tell us how accurately you "
-					+ "think you can perform the timer task when you just use your own memory (no reminders)"
-					+ ", with a <b>20 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you can remember to press the spacebar correctly when there is a <b>20 second wait</b> and no reminder."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
-			break;
-		case 140:
-			i = "Now, please tell us how accurately you "
-					+ "think you can perform the timer task when you just use your own memory (no reminders)"
-					+ ", with a <b>30 second wait</b> until you are supposed "
-					+ "to press the spacebar.<br><br>Please use the scale below to indicate what percentage "
-					+ "of times you can remember to press the spacebar correctly when there is a <b>30 second wait</b> and no reminder."
-					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
-					+ "that you can never get any of them correct.";
-			break;
-		case 150:
 			i = "You have now completed the experiment. Thank you for taking part.<br><br>"
-					+ "Please click on the link below to receive your payment:"
-					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=7EB98BB9\">"
+					+ "Please click on the link below to receive your payment:****"
+					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=\">"
 					+ "CLICK HERE</a></b>";
 			break;
 		}

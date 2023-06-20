@@ -3,6 +3,7 @@ package com.sam.webtasks.basictools;
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.Window;
 
 public class Counterbalance {
 	private static ArrayList<String> factorNames = new ArrayList<String>();    //name of each factor
@@ -35,6 +36,10 @@ public class Counterbalance {
 			if (name.contentEquals(factorNames.get(i))){
 				level=factorLevels.get(i);
 			}
+		}
+		
+		if(level==-1) {
+			Window.alert("Factor " + name + " not found.");
 		}
 		
 		return(level);

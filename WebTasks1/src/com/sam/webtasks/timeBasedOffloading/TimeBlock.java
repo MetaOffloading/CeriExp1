@@ -33,18 +33,6 @@ public class TimeBlock {
 	public static boolean shufflePMintervals;
 	public static int blockNumber;
 	public static int trialNumber;
-	/*
-	public static int[] numberKeys = {KeyCodes.KEY_ZERO,
-									  KeyCodes.KEY_ONE,
-			                          KeyCodes.KEY_TWO, 
-			                          KeyCodes.KEY_THREE,
-			                          KeyCodes.KEY_FOUR,
-			                          KeyCodes.KEY_FIVE,
-			                          KeyCodes.KEY_SIX,
-			                          KeyCodes.KEY_SEVEN,
-			                          KeyCodes.KEY_EIGHT,
-			                          KeyCodes.KEY_NINE};
-	*/
 	
 	public static int[] numberKeys = {KeyCodes.KEY_A,
 									  KeyCodes.KEY_B,
@@ -69,9 +57,7 @@ public class TimeBlock {
 									  KeyCodes.KEY_U,
 									  KeyCodes.KEY_V,
 									  KeyCodes.KEY_W,
-									  KeyCodes.KEY_X,
-									  KeyCodes.KEY_Y,
-									  KeyCodes.KEY_Z};
+									  KeyCodes.KEY_Y};
 
 	public static int PMkey;
 	public static int spaceBarKey = KeyCodes.KEY_SPACE;
@@ -136,8 +122,8 @@ public class TimeBlock {
 		reminderButtonOperated=false;
 		nReminders=0;
 		nTimers=0;
-		timerClicks=5;
-		reminderClicks=5;
+		timerClicks=2;
+		reminderClicks=1;
 		spacebarPressed=false;
 		
 		if (TimeDisplay.isInitialised == false) {
@@ -146,6 +132,8 @@ public class TimeBlock {
 		
 		TimeDisplay.clockDisplay.setHTML("0:00");
 		TimeDisplay.stimulusDisplay.setHTML("Press spacebar to start");
+		TimeDisplay.reminderButton.setHTML("Create reminder (" + reminderClicks + ")");
+		TimeDisplay.timerButton.setHTML("Set timer (" + timerClicks + ")");
 		
 		TimeDisplay.focusPanel.setFocus(true);
 		TimeDisplay.timerButton.setEnabled(false);
@@ -158,11 +146,12 @@ public class TimeBlock {
 	
 	public static void Run() {
 		if (defaultPMintervals) {
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 1; i++) {
 				PMinterval_list.add(10);
-				PMinterval_list.add(20);
 				PMinterval_list.add(30);
 			}
+			
+			blockDuration = 65;
 		}
 		
 		if (shufflePMintervals) {
@@ -182,6 +171,7 @@ public class TimeBlock {
 		TimeDisplay.clockDisplay.setVisible(clockVisible);
 		TimeDisplay.SetClockVisible(clockAlwaysOn);
 		TimeDisplay.timerButton.setVisible(timerButtonVisible);
+		TimeDisplay.reminderButton.setVisible(reminderButtonVisible);
 		RootPanel.get().add(TimeDisplay.focusPanel);
 		TimeDisplay.waitForSpacebar = true;
 
