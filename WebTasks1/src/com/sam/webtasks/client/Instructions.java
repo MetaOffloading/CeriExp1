@@ -79,7 +79,7 @@ public class Instructions {
 		case 100:
 			i = "In this part of the experiment, the instruction will <b>never</b> be to press the spacebar at a particular "
 					+ "time, it will always be one of the other keys. This will be random each time. Sometimes you will be told "
-					+ "to press the spacebar soon (in 10 seconds) and sometimes you will have to wait longer (30 seconds). "
+					+ "to press this key soon (in 10 seconds) and sometimes you will have to wait longer (30 seconds). "
 					+ "The instructions on the screen will always tell you exactly what to do.<br><br>"
 					+ "You are free to set as many reminders as you like. You can set either type of reminder, or both. It is "
 					+ "completely up to you. Click below to continue.";
