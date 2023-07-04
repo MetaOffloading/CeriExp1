@@ -209,10 +209,17 @@ public class TimeDisplay {
 					TimeBlock.PMkey = TimeBlock.spaceBarKey;
 				} else {
 					int k = Random.nextInt(TimeBlock.numberKeys.length);
-
-					instructionString = "Hit the " + (char)(k+65) + " key at " + timeString(TimeBlock.nextTarget);
 					
 					TimeBlock.PMkey = TimeBlock.numberKeys[k];
+					
+					if (k==TimeBlock.numberKeys.length-1) {
+						//Skip the X key and display Y instead
+						k++;
+					}
+					
+					TimeBlock.PMchar = k;
+
+					instructionString = "Hit the " + (char)(k+'A') + " key at " + timeString(TimeBlock.nextTarget);	
 				}
 				
 				timeForInstruction=true;
@@ -335,6 +342,10 @@ public class TimeDisplay {
 				}
 				
 				if (newStimulus == stimulus_2back) {
+					notvalid=true;
+				}
+				
+				if (newStimulus == TimeBlock.PMchar) {
 					notvalid=true;
 				}
 			}

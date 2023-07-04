@@ -35,8 +35,8 @@ public class Instructions {
 			i = "Each time you are asked to press "
 					+ "the spacebar, you can only do this <b>once</b>. For example, if you are told to press the spacebar at "
 					+ "0:20 and you already press it at 0:15, it will not count if you press it again. So you should only "
-					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice again. When you do "
-					+ "the task this time, instead of being asked to press the spacebar at a particular time you will be "
+					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice again. "
+					+ "This time, instead of being asked to press the spacebar at a particular time, you will be "
 					+ "asked to press another button on your keyboard. For example you might be asked to press the 'A' key. "
 					+ "The computer will tell you which key to press.";
 			break;
@@ -78,11 +78,24 @@ public class Instructions {
 			break;
 		case 100:
 			i = "In this part of the experiment, the instruction will <b>never</b> be to press the spacebar at a particular "
-					+ "time, it will always be one of the other keys. Sometimes you will be told "
+					+ "time, it will always be one of the other keys. This will be random each time. Sometimes you will be told "
 					+ "to press the spacebar soon (in 10 seconds) and sometimes you will have to wait longer (30 seconds). "
 					+ "The instructions on the screen will always tell you exactly what to do.<br><br>"
 					+ "You are free to set as many reminders as you like. You can set either type of reminder, or both. It is "
 					+ "completely up to you. Click below to continue.";
+			break;
+		case 101:
+			i = "Before continuing, please tell us how confident you are that you will remember to press the spacebar "
+					+ "at the instructed time. Please keep in mind that it will always be the spacebar that you need to remember to press. "
+					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
+					+ "at the correct moment every single time.";
+			break;
+		case 102:
+			i = "Before continuing, please tell us how confident you are that you will remember to press the special keys "
+					+ "at the instructed time. Please keep in mind that it will always be a randomly selected key that you need to remember "
+					+ "to press. "
+					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
+					+ "at the correct moment every single time.";
 			break;
 		case 110:
 			i = "Thank you, you are now half way through the experiment.<br><br>When you are ready, click below to continue.";

@@ -126,7 +126,20 @@ public class SequenceHandler {
 				TimeBlock.Run();
 				break;
 			case 7:
-				ClickPage.Run(Instructions.Get(40),  "Next");
+				if (TimeBlock.PMhits==0) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-3);
+					
+					//we set the nBack accuracy to greater than 0, so that the
+					//practice session for this task does not get triggered again
+					TimeBlock.nBackNonMatchCorr=1;
+					TimeBlock.nBackMatchCorr=1;
+					
+					ClickPage.Run("You didn't remember to press the instructed key.", "Try again");
+					
+					TimeBlock.PMhits=1; //set this to one so that it doesn't say 'you didn't press spacebar' when it skips back
+				} else {
+					ClickPage.Run(Instructions.Get(40),  "Next");
+				}
 				break;
 			case 8:
 				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
@@ -155,7 +168,13 @@ public class SequenceHandler {
 				TimeBlock.Run();
 				break;
 			case 10:
-				ClickPage.Run(Instructions.Get(60),  "Next");
+				if (!TimeBlock.timerButtonOperated & !TimeBlock.reminderButtonOperated) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-3);
+					
+					ClickPage.Run("You didn't set a reminder.", "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(60),  "Next");
+				}
 				break;
 			case 11:
 				if(Counterbalance.getFactorLevel("whichReminderFirst")==ExtraNames.ALERT_FIRST) {
@@ -184,7 +203,18 @@ public class SequenceHandler {
 				TimeBlock.Run();
 				break;
 			case 13:
-				ClickPage.Run(Instructions.Get(80),  "Next");
+				if (!TimeBlock.timerButtonOperated & !TimeBlock.reminderButtonOperated) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-3);
+					
+					//we set the nBack accuracy to greater than 0, so that the
+					//practice session for this task does not get triggered again
+					TimeBlock.nBackNonMatchCorr=1;
+					TimeBlock.nBackMatchCorr=1;
+					
+					ClickPage.Run("You didn't set a reminder.", "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(80),  "Next");
+				}
 				break;
 			case 14:
 				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
@@ -194,6 +224,13 @@ public class SequenceHandler {
 				}
 				break;
 			case 15:
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					Slider.Run(Instructions.Get(101), "0%", "100%");
+				} else {
+					Slider.Run(Instructions.Get(102), "0%", "100%");
+				}
+				break;			
+			case 16:
 				TimeBlock.Init();
 				
 				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
@@ -206,17 +243,24 @@ public class SequenceHandler {
 				
 				TimeBlock.Run();
 				break;
-			case 16:
+			case 17:
 				ClickPage.Run(Instructions.Get(110),  "Next");
 				break;
-			case 17:
+			case 18:
 				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
 					ClickPage.Run(Instructions.Get(100),  "Next");
 				} else {
 					ClickPage.Run(Instructions.Get(90), "Next");
 				}
 				break;
-			case 18:
+			case 19:
+				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
+					Slider.Run(Instructions.Get(102), "0%", "100%");
+				} else {
+					Slider.Run(Instructions.Get(101), "0%", "100%");
+				}
+				break;
+			case 20:
 				TimeBlock.Init();
 				
 				if(Counterbalance.getFactorLevel("whichConditionFirst")==ExtraNames.SPACEBAR_FIRST) {
@@ -229,7 +273,7 @@ public class SequenceHandler {
 				
 				TimeBlock.Run();
 				break;
-			case 19:
+			case 21:
 				ClickPage.Run(Instructions.Get(120), "nobutton");
 				break;	
 			}

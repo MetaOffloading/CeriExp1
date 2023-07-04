@@ -60,6 +60,7 @@ public class TimeBlock {
 									  KeyCodes.KEY_Y};
 
 	public static int PMkey;
+	public static int PMchar;
 	public static int spaceBarKey = KeyCodes.KEY_SPACE;
 	public static int nonMatchKey = KeyCodes.KEY_Z;
 	public static int matchKey = KeyCodes.KEY_X;
@@ -75,6 +76,10 @@ public class TimeBlock {
 	public static int nReminders;
 	public static int nTimers;
 	public static boolean spacebarPressed = false;
+	
+	//has an instruction just been presented?
+	public static boolean instructionOn;
+	public static Date instructionTimeStamp;
 	
 	
 	//multiple possible PM keys?
@@ -125,6 +130,7 @@ public class TimeBlock {
 		timerClicks=2;
 		reminderClicks=1;
 		spacebarPressed=false;
+		instructionOn=false;
 		
 		if (TimeDisplay.isInitialised == false) {
 			TimeDisplay.Init();

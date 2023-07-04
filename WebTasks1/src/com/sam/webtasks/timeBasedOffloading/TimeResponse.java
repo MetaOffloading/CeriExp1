@@ -78,6 +78,9 @@ public class TimeResponse {
 						TimeDisplay.focusPanel.setFocus(true);
 						
 						TimeDisplay.spacebarToContinue.schedule(7000); //remind them to press the spacebar to continue
+						
+						TimeBlock.instructionOn=true;
+						TimeBlock.instructionTimeStamp = new Date();
 					}
 				}
 			}.schedule(TimeBlock.RSI);
@@ -85,6 +88,17 @@ public class TimeResponse {
 		
 		if (TimeDisplay.waitForSpacebar) {
 			if (response==TimeBlock.spaceBarKey) {
+				if (TimeBlock.instructionOn) {
+					TimeBlock.instructionOn=false;
+					
+					int instructionReadingTime = (int) (new Date().getTime() - TimeBlock.instructionTimeStamp.getTime());
+					
+					String data = TimeBlock.blockNumber + "," + TimeBlock.trialNumber + ",";
+					data = data + instructionReadingTime + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
+					
+					PHP.logData("instuctionReadingTime", data, false);
+				}
+						
 				if (TimeDisplay.awaitingPMresponse) {
 					if (TimeBlock.allowOffloading) {
 						TimeDisplay.timerButton.setEnabled(true);
