@@ -155,7 +155,11 @@ public class TimeDisplay {
 							focusPanel.setFocus(true);
 							reminderClicksRemaining = TimeBlock.reminderClicks;
 							
+							int buttonWidth = reminderButton.getOffsetWidth();
+							
 							reminderButton.setHTML(Window.prompt("What is your reminder?", ""));
+							
+							reminderButton.setWidth(buttonWidth + "px");
 						} else {
 							reminderButton.setHTML("Create reminder (" + reminderClicksRemaining + ")");
 						}

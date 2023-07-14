@@ -90,12 +90,13 @@ public class SequenceHandler {
 				break;
 			case 4:
 				TimeBlock.Init();
-				TimeBlock.blockDuration=25;
+				TimeBlock.blockDuration=65;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.timerButtonVisible=false;
 				TimeBlock.reminderButtonVisible=false;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.PMinterval_list.add(30);
 				TimeBlock.blockNumber=-2;
 				TimeBlock.Run();
 				break;
