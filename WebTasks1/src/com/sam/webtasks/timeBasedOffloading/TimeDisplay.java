@@ -157,7 +157,12 @@ public class TimeDisplay {
 							
 							int buttonWidth = reminderButton.getOffsetWidth();
 							
-							reminderButton.setHTML(Window.prompt("What is your reminder?", ""));
+							String reminder = Window.prompt("What is your reminder?", "");
+							
+							data = reminder + "," + TimeBlock.blockNumber + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
+							PHP.logData("TB_reminderText", data, false);
+							
+							reminderButton.setHTML(reminder);
 							
 							reminderButton.setWidth(buttonWidth + "px");
 						} else {
