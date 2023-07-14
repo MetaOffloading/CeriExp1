@@ -181,10 +181,10 @@ public class TimeBlock {
 		RootPanel.get().add(TimeDisplay.focusPanel);
 		TimeDisplay.waitForSpacebar = true;
 		
-		int buttonWidth = TimeDisplay.reminderButton.getOffsetWidth();
-		TimeDisplay.timerButton.setWidth(buttonWidth + "px");
-		//TimeDisplay.timerButton.addStyleName("rightMarginSmall");
-		
+		if (reminderButtonVisible) {
+			int buttonWidth = TimeDisplay.reminderButton.getOffsetWidth();
+			TimeDisplay.timerButton.setWidth(buttonWidth + "px");
+		}
 
 		//set timestamp for beginning of block
 		blockStart = new Date();
