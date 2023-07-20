@@ -65,7 +65,7 @@ public class TimeResponse {
 			TimeDisplay.stimulusDisplay.setHTML("");
 			
 			TimeDisplay.timerButton.setHTML("Set timer (" + TimeDisplay.timerClicksRemaining + ")");
-			TimeDisplay.reminderButton.setHTML("Create reminder (" + TimeDisplay.reminderClicksRemaining + ")");
+			TimeDisplay.reminderButton.setHTML("Create reminder");
 			
 			new Timer() {
 				public void run() {

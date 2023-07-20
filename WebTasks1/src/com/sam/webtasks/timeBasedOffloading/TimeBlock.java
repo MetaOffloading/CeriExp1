@@ -59,7 +59,7 @@ public class TimeBlock {
 									  KeyCodes.KEY_W,
 									  KeyCodes.KEY_Y};
 
-	public static int PMkey;
+	public static int PMkey=65;
 	public static int PMchar;
 	public static int spaceBarKey = KeyCodes.KEY_SPACE;
 	public static int nonMatchKey = KeyCodes.KEY_Z;
@@ -69,8 +69,8 @@ public class TimeBlock {
 	public static int nBackNonMatchCorr; //number of correct 'nonmatch' responses
 	public static int nBackTargetsPresented;
 	public static int PMhits;
-	public static boolean timerButtonOperated;
-	public static boolean reminderButtonOperated;
+	public static int timerButtonOperated;
+	public static int reminderButtonOperated;
 	public static int timerClicks; //how many times does the offload button need to be clicked?
 	public static int reminderClicks;
 	public static int nReminders;
@@ -111,6 +111,7 @@ public class TimeBlock {
 		targetInstructionInterval=10;
 		nextInstruction=targetInstructionInterval;		
 		blockDuration=365;
+		multiPM=false;
 		tickTime=1000;
 		RSI=300;
 		nBackTargetProb=0.2;
@@ -123,11 +124,11 @@ public class TimeBlock {
 		nBackNonMatchCorr = 0;
 		nBackTargetsPresented = 0;
 		PMhits=0;
-		timerButtonOperated=false;
-		reminderButtonOperated=false;
+		timerButtonOperated=0;
+		reminderButtonOperated=0;
 		nReminders=0;
 		nTimers=0;
-		timerClicks=2;
+		timerClicks=3;
 		reminderClicks=1;
 		spacebarPressed=false;
 		instructionOn=false;
@@ -138,7 +139,7 @@ public class TimeBlock {
 		
 		TimeDisplay.clockDisplay.setHTML("0:00");
 		TimeDisplay.stimulusDisplay.setHTML("Press spacebar to start");
-		TimeDisplay.reminderButton.setHTML("Create reminder (" + reminderClicks + ")");
+		TimeDisplay.reminderButton.setHTML("Create reminder");
 		TimeDisplay.timerButton.setHTML("Set timer (" + timerClicks + ")");
 		
 		TimeDisplay.focusPanel.setFocus(true);
@@ -152,12 +153,12 @@ public class TimeBlock {
 	
 	public static void Run() {
 		if (defaultPMintervals) {
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 3; i++) {
 				PMinterval_list.add(10);
 				PMinterval_list.add(30);
 			}
 			
-			blockDuration = 65;
+			blockDuration = 185;
 		}
 		
 		if (shufflePMintervals) {
@@ -170,7 +171,7 @@ public class TimeBlock {
 			targetInstructionInterval = Integer.MAX_VALUE;
 			nextInstruction = targetInstructionInterval;
 		}
-		
+
 		nextTarget=nextInstruction+TimeDisplay.generateDelay();
 		lastTarget=nextTarget;
 

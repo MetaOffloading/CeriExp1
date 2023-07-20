@@ -35,17 +35,33 @@ public class Instructions {
 			i = "Each time you are asked to press "
 					+ "the spacebar, you can only do this <b>once</b>. For example, if you are told to press the spacebar at "
 					+ "0:20 and you already press it at 0:15, it will not count if you press it again. So you should only "
-					+ "press the spacebar when it is time to do so.<br><br>Please click below to practice again. "
-					+ "This time, instead of being asked to press the spacebar at a particular time, you will be "
-					+ "asked to press another button on your keyboard. For example you might be asked to press the 'A' key. "
-					+ "The computer will tell you which key to press.";
+					+ "press the spacebar when it is time to do so.<br><br> In this experiment, sometimes you will be "
+					+ "asked to press the spacebar in 10 seconds time and sometimes you will be asked to press the spacebar "
+					+ "in 30 seconds time.<br><br>Please click below to practise again";
+			break;
+		case 35:
+			i= "For half of this experiment, the task will be the same as the one you just practised. You will be given "
+					+ "instructions to press the spacebar when the clock shows a particular time. It will always be the spacebar that "
+					+ "you need to press when the time comes.<br><br>"
+					+ " In the other half of the experiment, you will be asked to press another button on your keyboard "
+					+ "when the clock shows a particular time. In this half of the experiment, it will always be a different randomly selected button "
+					+ "each time. For example you might be asked to press the 'A' key when the clock shows a particular time. "
+					+ "The computer will tell you which key to press.<br><br>Click below to practise this.";
+			break;
+		case 36:
+			i = "You have now practised all the different memory tasks. In one half of the experiment you will "
+					+ "always be asked to remember to press the spacebar. In the other half, it will be a random "
+					+ "letter each time. Within each of the halves, sometimes you will need to remember the "
+					+ "instrution for 10 seconds and sometimes for 30 seconds.<br><br>"
+					+ "We would now like you to estimate how confident you are that you will be able to remember "
+					+ "these instructions.";
 			break;
 		case 40:
 			i = "To help you perform the task, you will have the option to set a reminder, if you want.<br><br>"
 					+ "Click below for instructions how to do this.";
 			break;
 		case 50:
-			i = "There will be a button on the screen saying 'Set timer'. You need to press this button <b>twice</b> "
+			i = "There will be a button on the screen saying 'Set timer'. You need to press this button <b>three times</b> "
 					+ "to activate a timer. Once you have activated it, this will make the clock flash red when it is "
 					+ "time to press whichever button you have been asked to press. This means that you don't have to remember "
 					+ "to check the clock yourself, but you still need to remember which button to press when the time comes.<br><br>"
@@ -66,7 +82,9 @@ public class Instructions {
 					+ "Click below to try this.";
 			break;
 		case 80:
-			i = "Now the experiment will start for real. Click below to start.";
+			i = "Now the experiment will start for real. Please complete the 2-back task as quickly "
+					+ "and accurately as possible, while remembering the intentions as best as you can."
+					+ "<br><br>Click below to start.";
 			break;
 		case 90:
 			i = "In this part of the experiment, the instruction will <b>always</b> be "
@@ -85,15 +103,26 @@ public class Instructions {
 					+ "completely up to you. Click below to continue.";
 			break;
 		case 101:
-			i = "Before continuing, please tell us how confident you are that you will remember to press the spacebar "
-					+ "at the instructed time. Please keep in mind that it will always be the spacebar that you need to remember to press. "
+			i = "Please tell us how confident you are that you will remember the instruction when you have "
+					+ "to press the <b>spacebar</b> in <b>10 seconds</b> time. "
 					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
 					+ "at the correct moment every single time.";
 			break;
 		case 102:
-			i = "Before continuing, please tell us how confident you are that you will remember to press the special keys "
-					+ "at the instructed time. Please keep in mind that it will always be a randomly selected key that you need to remember "
-					+ "to press. "
+			i = "Now, please tell us how confident you are that you will remember the instruction when you have "
+					+ "to press the <b>spacebar</b> in <b>30 seconds</b> time. "
+					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
+					+ "at the correct moment every single time.";
+			break;
+		case 103:
+			i = "Now, please tell us how confident you are that you will remember the instruction when you have "
+					+ "to press a <b>random key</b> in <b>10 seconds</b> time. "
+					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
+					+ "at the correct moment every single time.";
+			break;
+		case 104:
+			i = "Now, please tell us how confident you are that you will remember the instruction when you have "
+					+ "to press a <b>random key</b> in <b>30 seconds</b> time. "
 					+ "0% would mean that you will never remember to press it, and 100% would mean that you remember to press it "
 					+ "at the correct moment every single time.";
 			break;
@@ -102,8 +131,8 @@ public class Instructions {
 			break;	
 		case 120:
 			i = "You have now completed the experiment. Thank you for taking part.<br><br>"
-					+ "Please click on the link below to receive your payment:****"
-					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=\">"
+					+ "Please click on the link below to receive your payment:"
+					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=C1I2CPC5\">"
 					+ "CLICK HERE</a></b>";
 			break;
 		}
@@ -145,7 +174,7 @@ public class Instructions {
                 + "We aim to publish the results of this project in scientific journals and book chapters. Copies of the "
                 + "results can either be obtained directly from the scientific journals' websites or from us.<br><br>"
                 + "Should you wish to raise a complaint, please contact the Principal Investigator of this project, "
-                + "Dr Sam Gilbert (<a href=\"mailto:sam.gilbert@ucl.ac.uk\">sam.gilbert@ucl.ac.uk</a>). However, "
+                + "Professor Sam Gilbert (<a href=\"mailto:sam.gilbert@ucl.ac.uk\">sam.gilbert@ucl.ac.uk</a>). However, "
                 + "if you feel your complaint has not been handled to your satisfaction, please be aware that you can "
                 + "also contact the Chair of the UCL Research Ethics Committee (<a href=\"mailto:ethics@ucl.ac.uk\">ethics@ucl.ac.uk</a>).");
     }

@@ -124,7 +124,7 @@ public class TimeDisplay {
 					PHP.logData("TB_timerButtonClick", data, false);
 				
 					showTimer=true;
-					TimeBlock.timerButtonOperated=true;
+					TimeBlock.timerButtonOperated++;
 					TimeBlock.nTimers++;
 					timerButton.setEnabled(false);
 					focusPanel.setFocus(true);
@@ -149,7 +149,7 @@ public class TimeDisplay {
 						
 							PHP.logData("TB_reminderButtonClick", data, false);
 
-							TimeBlock.reminderButtonOperated=true;
+							TimeBlock.reminderButtonOperated++;
 							TimeBlock.nReminders++;
 							reminderButton.setEnabled(false);
 							focusPanel.setFocus(true);
@@ -217,15 +217,19 @@ public class TimeDisplay {
 					instructionString = "Hit the spacebar at " + timeString(TimeBlock.nextTarget);
 					TimeBlock.PMkey = TimeBlock.spaceBarKey;
 				} else {
-					int k = Random.nextInt(TimeBlock.numberKeys.length);
+					int k = TimeBlock.PMkey;
 					
-					TimeBlock.PMkey = TimeBlock.numberKeys[k];
-					
-					if (k==TimeBlock.numberKeys.length-1) {
-						//Skip the X key and display Y instead
-						k++;
+					//don't selet the same key as last time
+					while (k==TimeBlock.PMkey) {				
+						k = Random.nextInt(TimeBlock.numberKeys.length);
+
+						if (k==TimeBlock.numberKeys.length-1) {
+							//Skip the X key and display Y instead
+							k++;
+						}
 					}
 					
+					TimeBlock.PMkey = TimeBlock.numberKeys[k];
 					TimeBlock.PMchar = k;
 
 					instructionString = "Hit the " + (char)(k+'A') + " key at " + timeString(TimeBlock.nextTarget);	
