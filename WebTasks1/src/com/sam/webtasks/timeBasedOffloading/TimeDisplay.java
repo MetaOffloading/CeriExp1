@@ -180,7 +180,7 @@ public class TimeDisplay {
 			}
 			
 			String data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
-			PHP.logData("TB_clockTick", data, false);
+			//PHP.logData("TB_clockTick", data, false);
 			
 			clockDisplay.setHTML(timeString(TimeBlock.currentTime));
 			

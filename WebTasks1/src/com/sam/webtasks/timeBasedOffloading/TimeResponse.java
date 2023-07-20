@@ -19,13 +19,14 @@ public class TimeResponse {
 		//end of block? if so return control to the sequencehandler
 		//we specify blockDuration in seconds if it is positive, or trials if it is negative
 		boolean blockOver = false;
-			
+		
+		/*
 		if (response==KeyCodes.KEY_Q) {
 			TimeBlock.PMhits=1;
 			TimeBlock.nBackMatchCorr=1;
 			TimeBlock.nBackNonMatchCorr=1;
 			blockOver = true;
-		}
+		}*/
 		
 		if (TimeBlock.blockDuration > 0) { //specified in seconds
 			if (TimeBlock.currentTime >= TimeBlock.blockDuration) {

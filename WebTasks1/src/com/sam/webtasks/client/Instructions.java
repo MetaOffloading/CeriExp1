@@ -52,7 +52,7 @@ public class Instructions {
 			i = "You have now practised all the different memory tasks. In one half of the experiment you will "
 					+ "always be asked to remember to press the spacebar. In the other half, it will be a random "
 					+ "letter each time. Within each of the halves, sometimes you will need to remember the "
-					+ "instrution for 10 seconds and sometimes for 30 seconds.<br><br>"
+					+ "instruction for 10 seconds and sometimes for 30 seconds.<br><br>"
 					+ "We would now like you to estimate how confident you are that you will be able to remember "
 					+ "these instructions.";
 			break;

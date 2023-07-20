@@ -380,6 +380,18 @@ public class SequenceHandler {
 			case 37:
 				ProgressBar.Hide();
 				
+				// log data and check that it saves
+				String data = TimeStamp.Now() + ",";
+				data = data + SessionInfo.participantID + ",";
+				data = data + Counterbalance.getFactorLevel("whichReminderFirst") + ",";
+				data = data + Counterbalance.getFactorLevel("whichConditionFirst") + ",";
+				data = data + SessionInfo.gender + ",";
+				data = data + SessionInfo.age;
+
+				PHP.UpdateStatus("finished");
+				PHP.logData("finish", data, true);
+				break;
+			case 38:		
 				ClickPage.Run(Instructions.Get(120), "nobutton");
 				break;	
 			}
