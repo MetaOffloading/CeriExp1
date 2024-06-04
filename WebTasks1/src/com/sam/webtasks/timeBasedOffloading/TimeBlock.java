@@ -55,7 +55,7 @@ public class TimeBlock {
 									  KeyCodes.KEY_J,
 									  KeyCodes.KEY_K,
 									  KeyCodes.KEY_L,
-									  KeyCodes.KEY_M,
+									  //KeyCodes.KEY_M,
 									  KeyCodes.KEY_N,
 									  KeyCodes.KEY_O,
 									  KeyCodes.KEY_P,
@@ -66,6 +66,7 @@ public class TimeBlock {
 									  KeyCodes.KEY_U,
 									  KeyCodes.KEY_V,
 									  KeyCodes.KEY_W,
+									  //KeyCodes.KEY_X,
 									  KeyCodes.KEY_Y};
 
 	public static int PMkey=65;

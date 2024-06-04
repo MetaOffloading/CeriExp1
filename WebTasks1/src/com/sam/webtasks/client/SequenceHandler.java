@@ -67,21 +67,88 @@ public class SequenceHandler {
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
 			case 1:
-				Points.setPoints(300);
-				Points.Init();
-				
+				ClickPage.Run(Instructions.Get(10), "Next");
+				break;
+			case 2:
+				TimeBlock.Init();
+				TimeBlock.blockDuration=-10; //minus 10 means 10 trials instead of 10 seconds
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.clockVisible=false;
+				TimeBlock.timerButtonVisible=false;
+				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.targetInstructionInterval = -1; //don't present any targets
+				TimeBlock.blockNumber=-1;
+				TimeBlock.Run();
+				break;
+			case 3:
+				if ((TimeBlock.nBackNonMatchCorr==0)|(TimeBlock.nBackMatchCorr==0)) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2);
+					
+					ClickPage.Run("Your accuracy was too low", "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(20), "Next");
+				}
+				break;
+			case 4:
 				TimeBlock.Init();
 				TimeBlock.blockDuration=25;
 				TimeBlock.defaultPMintervals=false;
-				TimeBlock.clockVisible=true;
-				TimeBlock.clockAlwaysOn=false;
 				TimeBlock.timerButtonVisible=false;
 				TimeBlock.reminderButtonVisible=false;
+				TimeBlock.defaultPMintervals=false;
 				TimeBlock.PMinterval_list.add(10);
 				TimeBlock.multiPM=true;
+				TimeBlock.blockNumber=-2;
+				TimeBlock.Run();
+				break;
+			case 5:
+				if (TimeBlock.PMhits==0) {
+					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-3);
+					
+					//we set the nBack accuracy to greater than 0, so that the
+					//practice session for this task does not get triggered again
+					TimeBlock.nBackNonMatchCorr=1;
+					TimeBlock.nBackMatchCorr=1;
+					
+					ClickPage.Run("You didn't remember to press the " 
+					              + (char)(TimeBlock.PMchar+'A') + " key." , "Try again");
+				} else {
+					ClickPage.Run(Instructions.Get(30),  "Next");
+				}
+				break;
+			case 6:
+				Points.setPoints(0);
+				Points.Init();
+				
+				TimeBlock.Init();
+				TimeBlock.blockDuration = 65;
+				TimeBlock.showPoints = true;
+				TimeBlock.timerButtonVisible = false;
+				TimeBlock.reminderButtonVisible = false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.multiPM=true;
+				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.PMinterval_list.add(30);
+				TimeBlock.shufflePMintervals=false;
+				TimeBlock.blockNumber=-3;
+				TimeBlock.Run();
+				break;
+			case 7:
+				ClickPage.Run(Instructions.Get(40), "Next");
+				break;
+			case 8:
+				TimeBlock.Init();
+				TimeBlock.blockDuration = 25;
+				TimeBlock.showPoints = true;
+				TimeBlock.timerButtonVisible = false;
+				TimeBlock.reminderButtonVisible = false;
+				TimeBlock.defaultPMintervals=false;
+				TimeBlock.multiPM=true;
+				TimeBlock.PMinterval_list.add(10);
 				TimeBlock.optionalPM=true;
-				TimeBlock.showPoints=true;
-				TimeBlock.blockNumber=-1;
+				TimeBlock.PMreward=10;
+				TimeBlock.PMinstructionCost=2;
+				TimeBlock.blockNumber=-4;
 				TimeBlock.Run();
 				break;
 			}

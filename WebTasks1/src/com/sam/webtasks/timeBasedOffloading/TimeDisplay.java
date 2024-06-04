@@ -229,25 +229,32 @@ public class TimeDisplay {
 					TimeBlock.PMkey = TimeBlock.spaceBarKey;
 				} else {
 					int k = TimeBlock.PMkey;
+					int kChar=0;
 					
-					//don't selet the same key as last time
+					//don't select the same key as last time
 					while (k==TimeBlock.PMkey) {				
 						k = Random.nextInt(TimeBlock.numberKeys.length);
 
+						kChar = k;
+						
+						if (k>11) {
+							kChar++;//skip the M key
+						}
+						
 						if (k==TimeBlock.numberKeys.length-1) {
 							//Skip the X key and display Y instead
-							k++;
+							kChar++;
 						}
 					}
 					
 					TimeBlock.PMkey = TimeBlock.numberKeys[k];
-					TimeBlock.PMchar = k;
+					TimeBlock.PMchar = kChar;
 
 					if (TimeBlock.optionalPM==false) {
-						instructionString = "Hit the " + (char)(k+'A') + " key at " + timeString(TimeBlock.nextTarget);	
+						instructionString = "Hit the " + (char)(kChar+'A') + " key at " + timeString(TimeBlock.nextTarget);	
 					} else {
-						instructionString = "You can earn a " + TimeBlock.PMreward + " point bonus at " + timeString(TimeBlock.nextTarget)
-								+ "<br>Press the Enter for instructions<br>"
+						instructionString = "You can earn " + TimeBlock.PMreward + " points at " + timeString(TimeBlock.nextTarget)
+								+ "<br>For instructions press Enter<br>"
 								+ "(Cost: " + TimeBlock.PMinstructionCost + " points)<br>"
 										+ "Or Space to continue";	
 					}	
