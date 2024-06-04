@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.sam.webtasks.basictools.PHP;
+import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
 
 public class TimeBlock {
@@ -16,6 +17,14 @@ public class TimeBlock {
 	public static boolean clockVisible;
 	public static boolean timerButtonVisible;
 	public static boolean reminderButtonVisible;
+	public static boolean showPoints;
+	
+	//task type
+	public static boolean optionalPM;
+	
+	//points settings
+	public static int PMreward;
+	public static int PMinstructionCost;
 	
 	//timing settings
 	public static int currentTime;
@@ -65,6 +74,7 @@ public class TimeBlock {
 	public static int nonMatchKey = KeyCodes.KEY_Z;
 	public static int matchKey = KeyCodes.KEY_X;
 	public static int revealClockKey = KeyCodes.KEY_M;
+	public static int instructionKey = KeyCodes.KEY_ENTER;
 	public static int nBackMatchCorr ; //number of correct 'match' responses
 	public static int nBackNonMatchCorr; //number of correct 'nonmatch' responses
 	public static int nBackTargetsPresented;
@@ -103,7 +113,11 @@ public class TimeBlock {
 	/*-----------reset all block settings-----------*/
 	
 	public static void Init() {
+		optionalPM=false;
 		clockVisible=true;
+		showPoints=false;
+		PMreward=10;
+		PMinstructionCost=2;
 		timerButtonVisible=true;
 		reminderButtonVisible=true;
 		currentTime=0;
@@ -185,6 +199,12 @@ public class TimeBlock {
 		if (reminderButtonVisible) {
 			int buttonWidth = TimeDisplay.reminderButton.getOffsetWidth();
 			TimeDisplay.timerButton.setWidth(buttonWidth + "px");
+		}
+		
+		if (showPoints) {
+			Points.pointsDisplay.setVisible(true);
+		} else {
+			Points.pointsDisplay.setVisible(false);
 		}
 
 		//set timestamp for beginning of block

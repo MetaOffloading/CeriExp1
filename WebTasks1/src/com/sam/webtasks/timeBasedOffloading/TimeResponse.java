@@ -7,6 +7,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.sam.webtasks.basictools.PHP;
+import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
 import com.sam.webtasks.client.SequenceHandler;
 
@@ -78,7 +79,7 @@ public class TimeResponse {
 						TimeDisplay.waitForSpacebar=true;
 						TimeDisplay.focusPanel.setFocus(true);
 						
-						TimeDisplay.spacebarToContinue.schedule(7000); //remind them to press the spacebar to continue
+						//TimeDisplay.spacebarToContinue.schedule(7000); //remind them to press the spacebar to continue
 						
 						TimeBlock.instructionOn=true;
 						TimeBlock.instructionTimeStamp = new Date();
@@ -88,7 +89,12 @@ public class TimeResponse {
 		}
 		
 		if (TimeDisplay.waitForSpacebar) {
-			if (response==TimeBlock.spaceBarKey) {
+			if (response==TimeBlock.instructionKey) {
+				TimeDisplay.instructionString = "Hit the " + (char)(TimeBlock.PMchar+'A') + " key at " + TimeDisplay.timeString(TimeBlock.lastTarget);
+				TimeDisplay.stimulusDisplay.setHTML(TimeDisplay.instructionString);
+				
+				Points.subtractPoints(TimeBlock.PMinstructionCost);
+			} else if (response==TimeBlock.spaceBarKey) {
 				if (TimeBlock.instructionOn) {
 					TimeBlock.instructionOn=false;
 					
@@ -193,6 +199,7 @@ public class TimeResponse {
 
 						if (TimeBlock.spacebarPressed==false) {
 							TimeDisplay.clockDisplay.addStyleName("greenyellow");
+							Points.addPoints(TimeBlock.PMreward);
 						}
 						
 						new Timer() {

@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.Counterbalance;
 import com.sam.webtasks.basictools.PHP;
+import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
 import com.sam.webtasks.client.ExtraNames;
 
@@ -52,10 +53,11 @@ public class TimeDisplay {
 	public static final HorizontalPanel wrapper = new HorizontalPanel();
 	public static final FocusPanel focusPanel = new FocusPanel();
 	public static final VerticalPanel displayPanel = new VerticalPanel();
-	public static final HorizontalPanel clockPanel = new HorizontalPanel();
+	public static final VerticalPanel clockPanel = new VerticalPanel();
 	public static final HorizontalPanel stimulusPanel = new HorizontalPanel();
 	public static final HorizontalPanel offloadPanel = new HorizontalPanel();
 	
+
 	public static final HTML clockDisplay = new HTML();
 	public static final HTML stimulusDisplay = new HTML();
 	public static final Button timerButton = new Button();
@@ -74,17 +76,26 @@ public class TimeDisplay {
 		displayPanel.setHeight(displayHeight);
 		displayPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
+		//points display
+
+
+		//displayPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+		//displayPanel.add(pointsPanel);
+		
 		//clock panel
+		clockPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		clockPanel.add(Points.pointsDisplay);
 		clockPanel.add(clockDisplay);
 		
 		clockDisplay.addStyleName("clockText");
 		
-		displayPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 		displayPanel.add(clockPanel);
 		
 		//stimulus panel (we wrap it inside a focus panel so that it can receive keypresses)
 		stimulusDisplay.addStyleName("timeText");
 
+		stimulusPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+	
 		stimulusPanel.add(stimulusDisplay);
 		
 		displayPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
@@ -232,7 +243,14 @@ public class TimeDisplay {
 					TimeBlock.PMkey = TimeBlock.numberKeys[k];
 					TimeBlock.PMchar = k;
 
-					instructionString = "Hit the " + (char)(k+'A') + " key at " + timeString(TimeBlock.nextTarget);	
+					if (TimeBlock.optionalPM==false) {
+						instructionString = "Hit the " + (char)(k+'A') + " key at " + timeString(TimeBlock.nextTarget);	
+					} else {
+						instructionString = "You can earn a " + TimeBlock.PMreward + " point bonus at " + timeString(TimeBlock.nextTarget)
+								+ "<br>Press the Enter for instructions<br>"
+								+ "(Cost: " + TimeBlock.PMinstructionCost + " points)<br>"
+										+ "Or Space to continue";	
+					}	
 				}
 				
 				timeForInstruction=true;
