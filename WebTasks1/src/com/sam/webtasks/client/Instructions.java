@@ -2,6 +2,8 @@ package com.sam.webtasks.client;
 
 import com.sam.webtasks.basictools.Counterbalance;
 import com.sam.webtasks.iotask2.IOtask2BlockContext;
+import com.sam.webtasks.timeBasedOffloading.TimeBlock;
+import com.sam.webtasks.client.SequenceHandler;
 
 public class Instructions {
 
@@ -42,7 +44,36 @@ public class Instructions {
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 40:
-			i = "Instructions about optional intentions, and the cost of finding out which button";
+			i = "From now on, you can decide whether to take the timer task when it is presented. "
+					+ "As before, you will earn extra points if you remember to press the special key. "
+					+ "For example, you may be told <br><br> \"You can earn 10 points at 0:20 <br><br> For Instructions "
+					+ "press Enter <br><br> (Cost: 2 points) <br><br> Or Space to continue\" <br><br>"
+					+ "To take the timer task, you should press Enter to reveal the instructed time and special key at a small "
+					+ "cost of 2 points. To opt out of the timer task, you should press the spacebar to continue with the "
+					+ "letter task. <br><br> "
+					+ "It is completely up to you whether you choose to take the timer task. You should do whatever you think "
+					+ "will allow you to score the highest number of points."
+					+ "<br><br>Please click below to practise again";
+			break;
+		case 41:
+			i = "In general, you will earn a minimum of 10 points if you remember to press the special key, but occassionally you might "
+					+ "be able to earn more. You will be told the number of bonus points you can earn for successfully completing the timer task "
+					+ "before deciding. Please pay attention to the instructions before you begin each block."
+					+ "<br><br> The experiment will now begin. Please click below to proceed";
+			break;
+		case 50:
+			int reward;
+			if ((Counterbalance.getFactorLevel("whichRewardFirst")+SequenceHandler.block_id) % 2 == 0) {
+				reward = SequenceHandler.HR;
+			}
+			else {
+				reward = SequenceHandler.LR;
+			}
+			
+			
+			i = "You will earn " 
+					+ reward 
+					+ " points for successfully completing the optional timer task.";
 			break;
 		case 120:
 			i = "You have now completed the experiment. Thank you for taking part.<br><br>"

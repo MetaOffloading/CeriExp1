@@ -55,13 +55,47 @@ import com.sam.webtasks.timeBasedOffloading.TimeBlock;
 import com.sam.webtasks.iotask2.IOtask2InitialiseTrial;
 import com.sam.webtasks.iotask2.IOtask2PreTrial;
 
+
 public class SequenceHandler {
+	public final static int HR=20; // high reward
+	public final static int LR=10; // low reward
+	public static int block_id=0;
+	
+	public static void RunBlock() {
+		ProgressBar.SetProgress(block_id+1,6);
+		ProgressBar.Show();
+		TimeBlock.Init();
+		TimeBlock.blockDuration=40;
+		TimeBlock.showPoints = true;
+		TimeBlock.timerButtonVisible = false;
+		TimeBlock.reminderButtonVisible = false;
+		TimeBlock.defaultPMintervals=false;
+		TimeBlock.multiPM=true;
+		TimeBlock.PMinterval_list.add(10);
+		TimeBlock.PMinterval_list.add(10);
+		TimeBlock.PMinterval_list.add(10);
+		TimeBlock.PMinterval_list.add(30);
+		TimeBlock.PMinterval_list.add(30);
+		TimeBlock.PMinterval_list.add(30);
+		TimeBlock.shufflePMintervals=true;
+		TimeBlock.PMinstructionCost=2;
+		TimeBlock.blockNumber=block_id;
+		TimeBlock.optionalPM=true;
+		TimeBlock.PMreward=LR;
+		if ((Counterbalance.getFactorLevel("whichRewardFirst")+TimeBlock.blockNumber) % 2 == 0) {
+			TimeBlock.PMreward=HR;
+		}
+		TimeBlock.Run();
+		block_id++;
+	}
+		
 	public static void Next() {	
 		// move forward one step in whichever loop we are now in
 		sequencePosition.set(whichLoop, sequencePosition.get(whichLoop) + 1);
 
 		switch (whichLoop) {
 		case 0: // MAIN LOOP
+//			break;
 			switch (sequencePosition.get(0)) {
 			/***********************************************************************
 			 * The code here defines the main sequence of events in the experiment *
@@ -69,6 +103,7 @@ public class SequenceHandler {
 			case 1:
 				ClickPage.Run(Instructions.Get(10), "Next");
 				break;
+			
 			case 2:
 				TimeBlock.Init();
 				TimeBlock.blockDuration=-10; //minus 10 means 10 trials instead of 10 seconds
@@ -137,20 +172,88 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(40), "Next");
 				break;
 			case 8:
+				Points.setPoints(0);
+				Points.Init();
+				
 				TimeBlock.Init();
-				TimeBlock.blockDuration = 25;
+				TimeBlock.blockDuration = 65;
 				TimeBlock.showPoints = true;
 				TimeBlock.timerButtonVisible = false;
 				TimeBlock.reminderButtonVisible = false;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.multiPM=true;
 				TimeBlock.PMinterval_list.add(10);
-				TimeBlock.optionalPM=true;
-				TimeBlock.PMreward=10;
+				TimeBlock.PMinterval_list.add(30);
+				TimeBlock.shufflePMintervals=false;
 				TimeBlock.PMinstructionCost=2;
+				TimeBlock.optionalPM=true;
 				TimeBlock.blockNumber=-4;
 				TimeBlock.Run();
 				break;
+			case 9:
+				ClickPage.Run(Instructions.Get(41), "Next");
+				break;
+			case 10:
+				ClickPage.Run(Instructions.Get(50), "Next");
+				break;
+			case 11:
+				ProgressBar.Initialise();
+				Points.setPoints(0);
+				Points.Init();
+				RunBlock();
+				break;
+			case 12:
+				ProgressBar.SetProgress(1,6);
+				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
+				break;
+			case 13:
+				RunBlock();
+				break;
+			case 14:
+				ProgressBar.SetProgress(2,6);
+				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
+				break;
+			case 15:
+				RunBlock();
+				break;
+			case 16:
+				ProgressBar.SetProgress(3,6);
+				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
+				break;
+			case 17:
+				RunBlock();
+				break;
+			case 18:
+				ProgressBar.SetProgress(4,6);
+				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
+				break;
+			case 19:
+				RunBlock();
+				break;
+			case 20:
+				ProgressBar.SetProgress(5,6);
+				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
+				break;
+			case 21:
+				RunBlock();
+				break;
+			case 22:
+				String data2 = TimeStamp.Now() + ",";
+				data2 = data2 + SessionInfo.prolificExperimentCode + ",";
+				data2 = data2 + Counterbalance.getFactorLevel("whichRewardFirst") + ",";
+				data2 = data2 + SessionInfo.gender + ",";
+				data2 = data2 + SessionInfo.age;
+				
+				PHP.UpdateStatus("finished");
+				PHP.logData("finish", data2, true);
+				break;
+			case 23:
+				// the end
+				ProgressBar.SetProgress(6,6);
+				ClickPage.Run(Instructions.Get(10), "nobutton"); // TODO: change this instruction
+			
+				
+				
 			}
 			break;
 
