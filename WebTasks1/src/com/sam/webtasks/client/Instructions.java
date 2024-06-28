@@ -40,26 +40,32 @@ public class Instructions {
 					+ "press the special key when it is time to do so.<br><br> In this experiment, sometimes you will be "
 					+ "asked to press the special key after 10 seconds and sometimes you will be asked to press it "
 					+ "after 30 seconds.<br><br>When you remember to press the special key, you will "
-					+ "earn an extra bonus payment that will be sent to you after the experiment via Prolific."
+					+ "earn an extra bonus payment that will be sent to you after the experiment via Prolific.<br><br>"
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 40:
 			i = "From now on, you can decide whether to take the timer task when it is presented. "
-					+ "As before, you will earn extra points if you remember to press the special key. "
+					+ "As before, you will earn extra points and money if you remember to press the special key. "
 					+ "For example, you may be told <br><br> \"You can earn 10 points at 0:20 <br><br> For Instructions "
 					+ "press Enter <br><br> (Cost: 2 points) <br><br> Or Space to continue\" <br><br>"
-					+ "To take the timer task, you should press Enter to reveal the instructed time and special key at a small "
-					+ "cost of 2 points. To opt out of the timer task, you should press the spacebar to continue with the "
+					+ "To take the timer task, you should press Enter to reveal the instructed time and special key. "
+					+ "This will come with a small cost of 2 points but you will then earn 10 points if you remember the special key. "
+					+ "<br><br>You will receive £1 for every 100 points you score, which means that you can earn an additional "
+					+ "bonus payment of over £4.50, on top of the base payment from Prolific."
+					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the small cost but you will not "
+					+ "score any bonus points when you do this. To opt out of the timer task, just press the spacebar to continue with the "
 					+ "letter task. <br><br> "
-					+ "It is completely up to you whether you choose to take the timer task. You should do whatever you think "
-					+ "will allow you to score the highest number of points."
+					+ "It is completely up to you whether you choose to take the timer task. If you like, you can take the timer task some "
+					+ "times but not others. When you get this choice, just pick whichever option you prefer."
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 41:
-			i = "In general, you will earn a minimum of 10 points if you remember to press the special key, but occassionally you might "
-					+ "be able to earn more. You will be told the number of bonus points you can earn for successfully completing the timer task "
-					+ "before deciding. Please pay attention to the instructions before you begin each block."
-					+ "<br><br> The experiment will now begin. Please click below to proceed";
+			i = "Sometimes in this experiment you can earn 10 points when you remember to press the special key. At other times you can "
+					+ "earn 20 points. You will always be told the number of bonus points "
+					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you begin each block."
+					+ "<br><br>If you choose to do the timer task, don't forget to do the letter task as well. "
+					+ "You need to score at least 70% accuracy in the letter task, otherwise you will not receive any bonus "
+					+ "payments from the timer task.<br><br>The experiment will now begin. Please click below to proceed";
 			break;
 		case 50:
 			int reward;
@@ -71,7 +77,7 @@ public class Instructions {
 			}
 			
 			
-			i = "You will earn " 
+			i = "In this block, you can earn " 
 					+ reward 
 					+ " points for successfully completing the optional timer task.";
 			break;

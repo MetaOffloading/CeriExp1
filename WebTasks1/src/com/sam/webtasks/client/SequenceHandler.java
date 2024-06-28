@@ -62,22 +62,22 @@ public class SequenceHandler {
 	public static int block_id=0;
 	
 	public static void RunBlock() {
-		ProgressBar.SetProgress(block_id+1,6);
-		ProgressBar.Show();
+		ProgressBar.SetProgress(block_id+1,7);
+		//ProgressBar.Show();
 		TimeBlock.Init();
-		TimeBlock.blockDuration=40;
+		//TimeBlock.blockDuration=40;
 		TimeBlock.showPoints = true;
 		TimeBlock.timerButtonVisible = false;
 		TimeBlock.reminderButtonVisible = false;
-		TimeBlock.defaultPMintervals=false;
+		//TimeBlock.defaultPMintervals=false;
 		TimeBlock.multiPM=true;
-		TimeBlock.PMinterval_list.add(10);
+		/*TimeBlock.PMinterval_list.add(10);
 		TimeBlock.PMinterval_list.add(10);
 		TimeBlock.PMinterval_list.add(10);
 		TimeBlock.PMinterval_list.add(30);
 		TimeBlock.PMinterval_list.add(30);
 		TimeBlock.PMinterval_list.add(30);
-		TimeBlock.shufflePMintervals=true;
+		TimeBlock.shufflePMintervals=true;*/
 		TimeBlock.PMinstructionCost=2;
 		TimeBlock.blockNumber=block_id;
 		TimeBlock.optionalPM=true;
@@ -172,9 +172,6 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(40), "Next");
 				break;
 			case 8:
-				Points.setPoints(0);
-				Points.Init();
-				
 				TimeBlock.Init();
 				TimeBlock.blockDuration = 65;
 				TimeBlock.showPoints = true;
@@ -198,40 +195,35 @@ public class SequenceHandler {
 				break;
 			case 11:
 				ProgressBar.Initialise();
-				Points.setPoints(0);
-				Points.Init();
+				ProgressBar.Show();
+				ProgressBar.SetProgress(0,7);
 				RunBlock();
 				break;
 			case 12:
-				ProgressBar.SetProgress(1,6);
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 13:
 				RunBlock();
 				break;
 			case 14:
-				ProgressBar.SetProgress(2,6);
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 15:
 				RunBlock();
 				break;
 			case 16:
-				ProgressBar.SetProgress(3,6);
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 17:
 				RunBlock();
 				break;
 			case 18:
-				ProgressBar.SetProgress(4,6);
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 19:
 				RunBlock();
 				break;
 			case 20:
-				ProgressBar.SetProgress(5,6);
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 21:
@@ -249,11 +241,10 @@ public class SequenceHandler {
 				break;
 			case 23:
 				// the end
-				ProgressBar.SetProgress(6,6);
-				ClickPage.Run(Instructions.Get(10), "nobutton"); // TODO: change this instruction
-			
-				
-				
+				ProgressBar.Hide();
+				ClickPage.Run(Instructions.Get(120), "nobutton"); // TODO: change this instruction
+		
+				break;
 			}
 			break;
 

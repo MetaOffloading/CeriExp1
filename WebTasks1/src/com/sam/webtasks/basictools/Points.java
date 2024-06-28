@@ -17,7 +17,7 @@ public class Points {
 	public final static void setPoints (int nPoints) {
 		points = nPoints;
 		moneyString = getMoneyString(points);
-		pointsDisplay.setHTML("You have scored " + Points.points + " points (" + moneyString + ")");
+		pointsDisplay.setHTML("You have scored " + Points.points + " points (" + moneyString + " bonus)");
 	}
 	
 	public final static void addPoints(int pointsToAdd) {
@@ -29,6 +29,11 @@ public class Points {
 	}
 	
 	public final static String getMoneyString(int nPoints) {
+		//don't show a negative bonus
+		if (nPoints < 0) {
+			nPoints = 0;
+		}
+		
 		int nPence = (int) Math.ceil( (float) (100*nPoints) / Params.pointsPerPound);
 		int nPounds = nPence / 100;
 		int nRemainderPence = nPence % 100;
