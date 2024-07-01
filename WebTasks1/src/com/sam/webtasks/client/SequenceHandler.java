@@ -207,7 +207,7 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
 			case 13:
-				RunBlock();
+				RunBlock(); 
 				break;
 			case 14:
 				ProgressBar.SetProgress(2,6);

@@ -13,6 +13,8 @@ import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
 
 public class TimeBlock {
+	
+	
 	//display settings
 	public static boolean clockVisible;
 	public static boolean timerButtonVisible;
